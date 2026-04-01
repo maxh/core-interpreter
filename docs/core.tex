@@ -17,7 +17,7 @@
 \geometry{margin=1in}
 \usepackage{listings}
 \usepackage{tabularx}
-\date{\today}
+\date{April 2026}
 \title{Core}
 \hypersetup{
  pdfauthor={},
@@ -157,9 +157,10 @@ plus2 x = x + x
 \subsubsection{Mutual Recursion}
 \label{sec:org9a21ca5}
 
-All top-level declarations are mutually recursive.  See the discussion in \texttt{letrec} definition below to learn how to approach
-this.  The first few test programs we give you will not take advantage of mutual recursion, so you can get started on this
-and get some initial work done and add the mutual recursion later if you want.
+All top-level declarations are mutually recursive.  You can implement this using the same technique described for \texttt{letrec}
+in Section~\ref{sec:org7e6ee98}---taking advantage of Haskell's laziness to create an environment where all declarations
+can reference each other.  The first few test programs we give you will not take advantage of mutual recursion, so you can
+get started on this and get some initial work done and add the mutual recursion later if you want.
 \subsection{Let and Letrec}
 \label{sec:org7e6ee98}
 
@@ -173,7 +174,7 @@ would not allow this code because there are two definitions of \texttt{a}.
 hypotsq x y =
   let a = x * x ;
       a = a + y * y
-   in xx + yy + a
+   in a
 \end{verbatim}
 
 With \texttt{letrec}, all variables are created immediately, and all definitions have access to them.  Thus you can get access to a variable
@@ -241,7 +242,7 @@ Precedence & Associativity & Operators\\
  & None & \texttt{/}\\
 4 & Right & \texttt{+}\\
  & None & \texttt{-}\\
-3 & None & \texttt{==}, \texttt{\textasciitilde{}=}, \texttt{>}, \texttt{>=}, \texttt{<}, \texttt{<=}\\
+3 & None & \texttt{==}, \texttt{/=}, \texttt{>}, \texttt{>=}, \texttt{<}, \texttt{<=}\\
 2 & Right & \texttt{\&}\\
 1 & Right & \(\vert{}\)\\
 \end{tabular}
@@ -270,7 +271,7 @@ Precedence & Associativity & Operators\\
 & \textit{alt} $\rightarrow$ \textless num\textgreater\ var$_1$ $\ldots$ var$_n$ $\rightarrow$ expr & ($n \geq 0$) \\
 \textbf{Binary operators} & \textit{binop} $\rightarrow$ arithop $|$ relop $|$ boolop \\
 & \textit{arithop} $\rightarrow$ + $|$ - $|$ * $|$ / & (Arithmetic) \\
-& \textit{relop} $\rightarrow$ < $|$ <= $|$ == $|$ $\sim$= $|$ >= $|$ > & (Comparison) \\
+& \textit{relop} $\rightarrow$ < $|$ <= $|$ == $|$ /= $|$ >= $|$ > & (Comparison) \\
 & \textit{boolop} $\rightarrow$ \& $|$ $|$ & (Boolean) \\
 \textbf{Variables} & \textit{var} $\rightarrow$ alpha varch$_1$ $\ldots$ varch$_n$ & ($n \geq 0$) \\
 & \textit{alpha} $\rightarrow$ an alphabetic character \\
@@ -342,14 +343,14 @@ supercombinator \texttt{main} that takes no arguments.  Run that, and the result
 \subsection{Starting Files}
 \label{sec:orga11692f}
 
-Here is a github repository that has starting files.  This will be announced separately.
+Starting files are provided in the \texttt{project} directory of this repository.
 
-The files you need to modify are \texttt{Parse.hs}, \texttt{Interp.hs}, and \texttt{Types.hs}.  Be sure any modifications to \texttt{Type.hs} don't break anything
+The files you need to modify are \texttt{Parse.hs}, \texttt{Interp.hs}, and \texttt{Types.hs}.  Be sure any modifications to \texttt{Types.hs} don't break anything
 in the other files.  You may modify the other files, but you will only be allowed to hand in these three.  (You will also hand in a
 \texttt{prompts.txt} if you use LLMs or have a partner.)
 
-We will be putting sample programs in the \texttt{test} directory along with their expected outputs.  We recommend you copy the \texttt{project} files
-to another directory or repository, or else set the distribution as an \texttt{upstream} reposotory so you can get updates.
+Sample programs and expected outputs will be provided in the \texttt{core-files} directory in about a week.  We recommend you copy the \texttt{project} files
+to another directory or repository, or else set the distribution as an \texttt{upstream} repository so you can get updates.
 \subsection{Working Environment and LLMs}
 \label{sec:orgbec74ca}
 
