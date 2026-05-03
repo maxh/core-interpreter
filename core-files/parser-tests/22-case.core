@@ -1,0 +1,8 @@
+bool ::= True | False ;
+fruit ::= Cherry | Banana | Orange ;
+isRed c = case c of
+  <3> -> True ;
+  <4> -> False ;
+  <5> -> False
+;
+main = isRed Cherry

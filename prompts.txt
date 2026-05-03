@@ -1,0 +1,62 @@
+what commands should i run to get "stack test" working in this repo and why?
+
+i'm trying to add parsing support for "../core-files/parser-tests/01-ast-no-params.core". am i going down the right path with "TyExpr" or should  this be within the same type namespace as "Expr"? please do not give me answer, only a hint.
+
+i see "type Core = M.HashMap Name Decl" ... which holds variable but not type variables? 
+
+what is <|> under the hood
+
+type Parser = ParsecT String () Identity ... if i want to keep a counter monad in here what do you recommend
+
+what's going wrong 90 | parseCore text = parse core 0 "Core" text | ^^^^
+
+please look at my current impl and help me get the chainl1 working, give me hint dont update code
+
+is this correct syntax
+data ExpResult = Int | Bool
+eval :: Expr -> Env -> ExpResult
+what if i want a union type of existing types?
+
+how can i structure this better? data Out = OutInt Int | OutBool Bool deriving (Show) eval :: Expr -> Env -> Out eval (ENum i) _ = (OutInt i) eval (EBinOp l "+" r) env = OutInt $ (eval l env) + (eval r env) eval (EBinOp l "-" r) env = OutInt $ (eval l env) - (eval r env) eval (EBinOp l "*" r) env = OutInt $ (eval l env) * (eval r env) eval (EBinOp l "/" r) env = OutInt $ (eval l env) div (eval r env) eval (EBinOp l ">" r) env = OutBool $ (eval l env) > (eval r env) eval (EBinOp l "<" r) env = OutBool $ (eval l env) < (eval r env)
+
+Why am I getting
+Enter your program here and hit ^D when done.
+"Core" (line 1, column 11):
+unexpected " "
+expecting ">="
+
+ is there a more idiomatic way to do try (symbol ">=") <|> try (symbol "<=")
+
+❯ can i do this wrapOut (Int i) = (OutInt i) 
+❯ does seedEnv make sense here? run :: Core -> String let result = eval mainBody (seedEnv prog) seedEnv :: Core -> Env  seedEnv prog = M.filter
+
+help me understand how to write this one ? eAp :: Parser (Expr -> Expr -> Expr) 
+what are the two different exp for in the EAp type
+
+how do i know the parameter names for nested EAp expressions?
+
+expected answer with left associativity on functions? foo x y = y + x + 1 ; bar y = foo y (y + 1) ; main = bar 100 + foo 1 2 + bar 4
+
+❯ fromList [("foo",("foo",["x"],EAp (EVar "let") (EVar "y")))] stack run < ../core-files/parser-tests/20-let.core ... that doesnt seem to work with let? wondering if fun app needs to be atom?
+
+why am i getting unexpected " " expecting "case"
+
+how should True/False be represented in the AST? using EPack or EVar or something else? im not sure constructors are considered vars 
+
+i've updated the case spec files to match what i believe is the expected syntax... how do i know the numbers of the constructors at parse time? we cannot change the AST structure.
+
+please read the pdf for context. can you please confirm whether mutual recursion is correctly implemented?
+
+please generate 5 complex test scenarios and add them as new files in the test dir
+
+look at the pdf to understand requirements. is there anything i missed?
+
+please show me example of how to do Non-associative operators without chaining
+
+"The tricky part is + (right-associative) and - (non-associative) share a precedence level." ... can we make them different to avoid this complexity? what about * and  
+  /
+
+please read https://hmac.dev/posts/2019-03-03-the-core-language.html ... i feel like im missing something about how case is supposed to work
+
+look at the pdf to understand requirements. is there anything i missed?
+

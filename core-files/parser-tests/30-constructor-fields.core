@@ -1,0 +1,4 @@
+numPair ::= MkNumPair num num ;
+fst p = case p of <1> a b -> a ;
+snd p = case p of <1> a b -> b ;
+main = fst (MkNumPair 42 99) + snd (MkNumPair 1 2)

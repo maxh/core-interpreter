@@ -1,0 +1,6 @@
+fuzz a = 
+  letrec b = c + a ;
+         d = b + a ;
+         c = a + a 
+      in a + b + c + d ;
+main = fuzz 1

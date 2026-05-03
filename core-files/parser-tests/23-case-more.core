@@ -1,0 +1,6 @@
+tree ::= Leaf num | Branch tree tree ;
+sumTree t = case t of
+  <1> x -> x ;
+  <2> t1 t2 -> sumTree t1 + sumTree t2
+;
+main = sumTree (Branch (Branch (Leaf 1) (Leaf 2)) (Branch (Leaf 3) (Leaf 4)))

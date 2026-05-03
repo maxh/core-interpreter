@@ -1,0 +1,6 @@
+compute a =
+  letrec x = y + a ;
+         y = z * a ;
+         z = a + 2
+  in x + y + z ;
+main = compute 3

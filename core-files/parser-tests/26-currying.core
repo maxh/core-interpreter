@@ -1,0 +1,3 @@
+add = \a b . a + b ;
+add5 = add 5 ;
+main = add5 3

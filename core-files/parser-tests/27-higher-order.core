@@ -1,0 +1,3 @@
+apply f x = f x ;
+square = \x . x * x ;
+main = apply square 7
