@@ -53,10 +53,12 @@ look at the pdf to understand requirements. is there anything i missed?
 
 please show me example of how to do Non-associative operators without chaining
 
-"The tricky part is + (right-associative) and - (non-associative) share a precedence level." ... can we make them different to avoid this complexity? what about * and  
-  /
+"The tricky part is + (right-associative) and - (non-associative) share a precedence level." ... can we make them different to avoid this complexity? what about * and /
 
 please read https://hmac.dev/posts/2019-03-03-the-core-language.html ... i feel like im missing something about how case is supposed to work
 
 look at the pdf to understand requirements. is there anything i missed?
 
+can you please add a test case that tests a supercombinator with parameters passed as a first-class value
+
+please create a fork of the main repo under my gh account and give me url

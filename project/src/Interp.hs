@@ -118,20 +118,3 @@ showOut (OutInt i) = show i
 showOut (OutBool b) = show b
 showOut (OutPack tag fields) = "Pack " ++ show tag ++ " [" ++ unwords (map showOut fields) ++ "]"
 showOut (OutClosure _ _ _) = "<closure>"
-
--- eval :: Expr -> Env -> Program -> Value
--- eval (EAp e1 e2) env p =
---   case spine (EAp e1 e2) of
---     (EVar fnName, args) ->
---       case M.lookup fnName p of
---         Just (_, params, body) ->
---           let argVals = map (\arg -> eval arg env p) args
---               env' = foldl (\acc (param, val) -> M.insert param val acc)
---                            env
---                            (zip params argVals)
---            in eval body env' p
---         Nothing ->
---           error $ "Function not found: " ++ fnName
-
---     (f, _) ->
---       error $ "Cannot apply non-function: " ++ show f
